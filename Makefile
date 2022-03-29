@@ -10,14 +10,15 @@ PANDOC = pandoc
 # Folder in which the outputs will be placed
 TARGET_FOLDER = publishing-artifacts
 
-FORMATS = jats latex
+FORMATS = jats latex pdf
 
 .PHONY: all
-all: $(foreach f,$(FORMATS),$(f))
+all: $(FORMATS)
 
-.PHONY: jats latex
+.PHONY: $(FORMATS)
 jats:	$(TARGET_FOLDER)/paper.jats
 latex: $(TARGET_FOLDER)/paper.latex
+pdf: $(TARGET_FOLDER)/paper.pdf
 
 $(TARGET_FOLDER)/paper.%: $(ARTICLE) \
 		$(DATA_PATH)/scipy-conf-rst.lua \

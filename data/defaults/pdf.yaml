@@ -1,0 +1,5 @@
+defaults:
+  - data/defaults/latex.yaml
+pdf-engine: latexmk
+pdf-engine-opt: -lualatex
+output-file: paper.pdf
