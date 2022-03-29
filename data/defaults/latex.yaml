@@ -1,2 +1,5 @@
 to: latex
 output-file: paper.latex
+variables:
+  header-includes:
+    - '\usepackage{scipy}'
