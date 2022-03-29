@@ -1,0 +1,26 @@
+from: data/scipy-conf-rst.lua
+standalone: true
+
+metadata:
+  # All papers are currently written in English. We place it here so it
+  # cannot be overwritten in the paper YAML.
+  lang: 'en-US'
+
+filters:
+  - type: lua
+    path: inline-cited-references.lua
+  - type: citeproc
+  - type: lua
+    path: normalize-metadata.lua
+  - type: lua
+    path: time.lua
+  - type: lua
+    path: normalize-author-names.lua
+
+# ERROR, WARNING, or INFO
+verbosity: INFO
+
+dpi: 300
+
+default-image-extension: ".png"
+reference-links: true
