@@ -28,7 +28,7 @@ local function deflist_to_meta (items)
   return meta
 end
 
-local footer = [=[
+local header = [=[
 .. role:: ref
 
 .. role:: label
@@ -45,7 +45,7 @@ local footer = [=[
 
 function Reader (input, opts)
   opts.standalone = false
-  local doc = pandoc.read(tostring(input) .. footer, 'rst', opts)
+  local doc = pandoc.read(header .. tostring(input), 'rst', opts)
   -- treat initial definition list as metadata
   if doc.blocks[1].t == 'DefinitionList' then
     doc.meta = deflist_to_meta(doc.blocks[1].content)
