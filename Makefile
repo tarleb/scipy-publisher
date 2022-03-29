@@ -10,7 +10,7 @@ PANDOC = pandoc
 # Folder in which the outputs will be placed
 TARGET_FOLDER = publishing-artifacts
 
-FORMATS = jats latex pdf
+FORMATS = jats latex native pdf
 
 .PHONY: all
 all: $(FORMATS)
@@ -18,6 +18,7 @@ all: $(FORMATS)
 .PHONY: $(FORMATS)
 jats:	$(TARGET_FOLDER)/paper.jats
 latex: $(TARGET_FOLDER)/paper.latex
+native: $(TARGET_FOLDER)/paper.native
 pdf: $(TARGET_FOLDER)/paper.pdf
 
 $(TARGET_FOLDER)/paper.%: $(ARTICLE) \
