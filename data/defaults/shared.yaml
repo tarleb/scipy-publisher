@@ -7,15 +7,17 @@ metadata:
   lang: 'en-US'
 
 filters:
-  - type: lua
-    path: inline-cited-references.lua
+  - path: inline-cited-references.lua
+    type: lua
   - type: citeproc
-  - type: lua
-    path: normalize-metadata.lua
-  - type: lua
-    path: time.lua
-  - type: lua
-    path: normalize-author-names.lua
+  - path: normalize-metadata.lua
+    type: lua
+  - path: time.lua
+    type: lua
+  - path: normalize-author-names.lua
+    type: lua
+  - path: resolve-references.lua
+    type: lua
 
 # ERROR, WARNING, or INFO
 verbosity: INFO
