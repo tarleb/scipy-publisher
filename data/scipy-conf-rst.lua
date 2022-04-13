@@ -51,6 +51,21 @@ function Reader (input, opts)
     doc.meta = deflist_to_meta(doc.blocks[1].content)
     doc.blocks:remove(1)
   end
+
+  -- Promote top level heading to document title
+  local title
+  doc = doc:walk {
+    Header = function (h)
+      h.level = h.level - 1
+      if h.level == 0 then
+        title = h.content
+        return {}
+      end
+      return h
+    end
+  }
+  doc.meta.title = title
+
   -- parse raw LaTeX
   return doc:walk {
     RawBlock = function (raw)
