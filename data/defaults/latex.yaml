@@ -8,3 +8,6 @@ variables:
     - twoside
   header-includes:
     - '\usepackage{scipy}'
+filters:
+  - path: author-title-block.lua
+    type: lua
