@@ -11,3 +11,5 @@ variables:
 filters:
   - path: author-title-block.lua
     type: lua
+  - path: latex-table.lua
+    type: lua
