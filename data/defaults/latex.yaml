@@ -1,5 +1,10 @@
 to: latex
 output-file: paper.latex
 variables:
+  documentclass: IEEEtran
+  classoption:
+    - letterpaper
+    - compsoc
+    - twoside
   header-includes:
     - '\usepackage{scipy}'
