@@ -8,6 +8,8 @@ local equation_labels = {}
 local labels = {}
 
 local stringify = pandoc.utils.stringify
+local get_tag = function (x) return x.t end
+local List = pandoc.List
 
 local function collect_table_labels (tbl)
   ntables = ntables + 1
@@ -53,7 +55,7 @@ local function collect_equation_tags (span)
 end
 
 local function normalize_label_span (span)
-  if span.classes == pandoc.List{'label'} and span.identifier == '' then
+  if span.classes == List{'label'} and span.identifier == '' then
     span.identifier = span.attributes.label or stringify(span)
     span.attributes.label = span.identifier
     span.classes = {}
@@ -72,7 +74,7 @@ local function normalize_label_span (span)
 end
 
 local function resolve_ref_number (span)
-  if span.classes == pandoc.List{'ref'} then
+  if span.classes == List{'ref'} then
     local target = pandoc.utils.stringify(span)
     if FORMAT:match 'latex' then
       return pandoc.RawInline('latex', '\\ref{' .. target .. '}')
@@ -83,7 +85,7 @@ local function resolve_ref_number (span)
 end
 
 local function latex_equation (span)
-  if span.classes == pandoc.List{'equation'} then
+  if span.classes == List{'equation'} then
     local formula = #span.content == 1 and span.content[1] or nil
     if formula and formula.t == 'Math' then
       local env = span.type or 'equation'
