@@ -27,7 +27,6 @@ function Meta (meta)
   -- Iterate through authors again to handle affiliations.
   author_tex:insert(pandoc.RawInline('latex', '\\IEEEcompsocitemizethanks{'))
   for i, author in ipairs(authors) do
-    print(type(author.institution))
     author_tex:insert(pandoc.RawInline('latex', '\\IEEEcompsocthanksitem '))
     author_tex:insert(pandoc.Str(author.name))
     author_tex:extend(pandoc.Inlines ' is with ')

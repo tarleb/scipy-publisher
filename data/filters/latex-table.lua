@@ -29,6 +29,5 @@ function Table (tbl)
     :gsub('\n\\midrule%(%)\n', '\n\\midrule\n')
     :gsub('\n\\bottomrule%(%)', '\n\\bottomrule')
     :gsub('\n\\tabularnewline\n', '\n')
-  print(tex)
   return pandoc.RawBlock('latex', tex)
 end
