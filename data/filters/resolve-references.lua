@@ -17,9 +17,9 @@ local function collect_table_labels (tbl)
     Span = function (span)
       local label = span.attributes.label
       if label then
-        local label = stringify(span)
         table_labels[label] = tostring(ntables)
         labels[label] = {pandoc.Str(tostring(ntables))}
+        return pandoc.RawInline('latex', '\\label{' .. label .. '}')
       end
     end
   }
@@ -80,7 +80,7 @@ local function resolve_ref_number (span)
     if FORMAT:match 'latex' then
       return pandoc.RawInline('latex', '\\ref{' .. target .. '}')
     else
-      return pandoc.Link(labels[target], '#' .. target)
+      return pandoc.Link(labels[target] or '', '#' .. target)
     end
   end
 end
