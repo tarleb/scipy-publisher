@@ -39,6 +39,7 @@ local function collect_figure_labels (para)
         if label then
           figure_labels[label] = tostring(nfigures)
           labels[label] = {pandoc.Str(tostring(nfigures))}
+          return pandoc.RawInline('latex', '\\label{' .. label .. '}')
         end
       end
     }
