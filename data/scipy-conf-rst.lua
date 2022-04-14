@@ -67,11 +67,5 @@ function Reader (input, opts)
   doc.meta.title = title
 
   -- parse raw LaTeX
-  return doc:walk {
-    RawBlock = function (raw)
-      if raw.format == 'latex' then
-        return pandoc.read(raw.text, 'latex').blocks
-      end
-    end
-  }
+  return doc
 end
